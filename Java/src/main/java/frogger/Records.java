@@ -26,20 +26,19 @@ public class Records {
      * @param gender      gender of the frogger
      * @return Return false if the record has existed. Else, return true.
      */
-    public boolean addRecord(String firstName, String lastName, String phoneNumber,
-                             String zipCode, String state, String gender) {
+    public boolean addRecord(FroggerID frog) {
         for (String[] row : this.records) {
-            if (row[0].equals(firstName)
-                    && row[1].equals(lastName)
-                    && row[2].equals(phoneNumber)
-                    && row[3].equals(zipCode)
-                    && row[4].equals(state)
-                    && row[5].equals(gender)) {
+            if (row[0].equals(frog.firstName())
+                    && row[1].equals(frog.lastName())
+                    && row[2].equals(frog.phoneNumber())
+                    && row[3].equals(frog.zipCode())
+                    && row[4].equals(frog.state())
+                    && row[5].equals(frog.gender())) {
                 return false;
             }
         }
         this.records.add(
-                new String[]{firstName, lastName, phoneNumber, zipCode, state, gender});
+                new String[]{frog.firstName(), frog.lastName(), frog.phoneNumber(), frog.zipCode(), frog.state(), frog.gender()});
         return true;
     }
 }
