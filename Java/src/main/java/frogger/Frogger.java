@@ -7,7 +7,7 @@ package frogger;
  */
 public class Frogger {
 
-    // Field for task 1.
+    // Field for task 1. -- Feature envy
     private final Road road;
     private int position;
     
@@ -36,18 +36,13 @@ public class Frogger {
      */
     public boolean move(boolean forward) {
         int nextPosition = this.position + (forward ? 1 : -1);
-        if (!isValid(nextPosition) || isOccupied(nextPosition)) {
+        if (!isValid(nextPosition) || road.isOccupied(nextPosition)) {
             return false;
         }
         this.position = nextPosition;
         return true;
     }
 
-    // TODO: Do you notice any issues here?
-    public boolean isOccupied(int position) {
-        boolean[] occupied = this.road.getOccupied();
-        return occupied[position];
-    }
     
     public boolean isValid(int position) {
         if (position < 0) return false;
